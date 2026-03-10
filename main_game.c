@@ -8,21 +8,34 @@ int generateRandomNumber(int max)
     return rand()%(max+1);
 }
 
-void plus_minus(int guess, int target)
+int plus_minus(int guess, int target)
 {
     if(guess>target)
-        printf("c'est moins\n");
+    {
+         printf("c'est moins\n");
+         return 0;
+    }
     else if(guess < target)
+    {
 	printf("c'est plus\n");
+        return 0;
+    }
     else
+    {
         printf("bingo\n");
+        return 1;
+    }
 }
 int main() {
     int target=generateRandomNumber(100);
     int guess;
+    int is_win=0;
     printf("%d\n", target);
-    printf("Entrer un nombre entre 0 et 100\n");
-    scanf("%d",&guess);
-    plus_minus(guess, target);
+    while(!is_win)
+    {
+    	printf("Entrer un nombre entre 0 et 100\n");
+    	scanf("%d",&guess);
+    	is_win=plus_minus(guess, target);
+    }
     return 0;
 }
